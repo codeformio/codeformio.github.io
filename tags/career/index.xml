@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>career on &gt; codeform</title>
+    <link>https://codeform.io/tags/career/</link>
+    <description>Recent content in career on &gt; codeform</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 20 May 2019 10:30:00 -0400</lastBuildDate>
+    
+	<atom:link href="https://codeform.io/tags/career/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Notes on the Google Cloud Architect Certification</title>
+      <link>https://codeform.io/posts/google-cloud-architect-certification-notes/</link>
+      <pubDate>Mon, 20 May 2019 10:30:00 -0400</pubDate>
+      
+      <guid>https://codeform.io/posts/google-cloud-architect-certification-notes/</guid>
+      <description>When Google Cloud launched their Kubernetes platform (GKE) back in 2015 I signed up for the free trial. Today my free credits are long gone, but I still run and launch new clusters on a weekly basis. After putting it off for a while, I recently decided to formalize my experience by getting the GCP Architect certification. In this post I detail some of the resources I used to prepare for the exam.</description>
+    </item>
+    
+  </channel>
+</rss>

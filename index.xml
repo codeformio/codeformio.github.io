@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Intro on &gt; codeform</title>
+    <link>https://codeform.io/</link>
+    <description>Recent content in Intro on &gt; codeform</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://codeform.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Organizing Code &amp; Config</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/workflow/organizing-code-and-config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://codeform.io/docs/cloud-native-handbook/workflow/organizing-code-and-config/</guid>
+      <description>Organizing Code and Config Using a seperate repository for code and deployment manifests is recommended. The purpose of the code repo is solely to produce versioned software artifacts. The purpose of the config repo is solely to describe deployable software. Seperating these concerns provides multiple benefits.
+Small Merges Multiple environments typically correspond to multiple git branches. By keeping the concept of deployments local to config repositories (and out of code repos) you are able to handle environment promotion with smaller merges.</description>
+    </item>
+    
+    <item>
+      <title>Developing</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/workflow/developing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://codeform.io/docs/cloud-native-handbook/workflow/developing/</guid>
+      <description>Developing All development should occur in a &amp;ldquo;code repo&amp;rdquo;. This is a repository where the sole purpose is to produce deployable software. In the cloud native world, this means the goal is to push container images to a registry.
+The branching strategy described here mirrors oneflow. We feel like it is a good fit for most teams. A single long-lived branch keeps merging simple. Git tagging triggers container image tagging. Deployment is decoupled, avoiding the complexity of maintaining environment-specific branches.</description>
+    </item>
+    
+    <item>
+      <title>Deploying</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/workflow/deploying/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://codeform.io/docs/cloud-native-handbook/workflow/deploying/</guid>
+      <description>Deploying All deployments should be triggered from a &amp;ldquo;config repo&amp;rdquo;. This is a repository where the sole purpose is to describe runnable software (not develop it - no source code here).
+ Environment Promotion There are two top concerns when promoting software across environments:
+ Isolation - Seperating changes across environments Parity / Variety - Minimizing / accounting for differences  Isolation Isolation is addressed using branching. The top concern is to isolate non-production and production changes.</description>
+    </item>
+    
+    <item>
+      <title>Exercise</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/workflow/exercise/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://codeform.io/docs/cloud-native-handbook/workflow/exercise/</guid>
+      <description>Workflow Exercise Setup Define the environment.
+export ENV=non-prod Create a local cluster representing this environment.
+kind create cluster --name $ENV Bootstrap the Cluster Install the GitOps engine.
+kustomize build &amp;#34;https://github.com/codeformio/k8s-cluster-config/library/argocd?ref=$ENV&amp;#34; | kubectl apply -f - Bootstrap the cluster configuration by installing the root ArgoCD Application.
+kubectl apply -f https://raw.githubusercontent.com/codeformio/k8s-cluster-config/$ENV/deploy/$ENV/root.yaml Login to UI The ArgoCD UI can be used to view the application. By default the password for the admin user is set to the server&amp;rsquo;s pod name.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Cloud Init</title>
+      <link>https://codeform.io/posts/getting-started-with-cloud-init/</link>
+      <pubDate>Mon, 30 Oct 2017 10:30:00 -0400</pubDate>
+      
+      <guid>https://codeform.io/posts/getting-started-with-cloud-init/</guid>
+      <description>In this guide we are going to use cloud-init to bootstrap an apache server on AWS EC2.
+Introduction Cloud init is a service that comes installed on newer OS distributions. It is able to consume cloud-config files and execute them during the very first boot of a server. Cloud-config files use a declarative syntax (YAML format) to specify common configuration tasks such as:
+ Configuring SSH keys Settting up trusted CA certs Define users Run scripts etc.</description>
+    </item>
+    
+    <item>
+      <title>Notes on the Google Cloud Architect Certification</title>
+      <link>https://codeform.io/posts/google-cloud-architect-certification-notes/</link>
+      <pubDate>Mon, 20 May 2019 10:30:00 -0400</pubDate>
+      
+      <guid>https://codeform.io/posts/google-cloud-architect-certification-notes/</guid>
+      <description>When Google Cloud launched their Kubernetes platform (GKE) back in 2015 I signed up for the free trial. Today my free credits are long gone, but I still run and launch new clusters on a weekly basis. After putting it off for a while, I recently decided to formalize my experience by getting the GCP Architect certification. In this post I detail some of the resources I used to prepare for the exam.</description>
+    </item>
+    
+    <item>
+      <title>Simple Golang Retry Function</title>
+      <link>https://codeform.io/posts/simple-golang-retry-function/</link>
+      <pubDate>Mon, 29 May 2017 09:54:15 -0400</pubDate>
+      
+      <guid>https://codeform.io/posts/simple-golang-retry-function/</guid>
+      <description>Adding retry policies in your software is an easy way to increase resiliency. This is especially useful when making HTTP requests or doing anything else that has to reach out across the network.
+If at first you don’t succeed, try, try again. In go code, that translates to:
+func retry(attempts int, sleep time.Duration, fn func() error) error { if err := fn(); err != nil { if s, ok := err.</description>
+    </item>
+    
+    <item>
+      <title>Go: Wrapping http.ResponseWriter with Middleware</title>
+      <link>https://codeform.io/posts/golang-wrapping-http-response-writer-for-middleware/</link>
+      <pubDate>Tue, 06 Jun 2017 10:37:14 -0400</pubDate>
+      
+      <guid>https://codeform.io/posts/golang-wrapping-http-response-writer-for-middleware/</guid>
+      <description>Using middleware provides a clean way to reduce code duplication when handling HTTP requests in Go. By utilizing the standard handler signature, func(w http.ResponseWriter, r *http.Request) we can write functions that are easily dropped into any Go web service. One of the most common uses of middleware is to provide request/response logging. In order to log responses we will need to capture the status code that was written by a nested handler.</description>
+    </item>
+    
+  </channel>
+</rss>

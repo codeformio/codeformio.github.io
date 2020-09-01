@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://codeform.io/docs/cloud-native-handbook/workflow/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/docs/cloud-native-handbook/workflow/organizing-code-and-config/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/docs/cloud-native-handbook/workflow/developing/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/docs/cloud-native-handbook/workflow/deploying/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/docs/cloud-native-handbook/workflow/exercise/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/mentoring/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/posts/getting-started-with-cloud-init/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/posts/google-cloud-architect-certification-notes/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/posts/simple-golang-retry-function/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/posts/golang-wrapping-http-response-writer-for-middleware/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/categories/Architecture/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/tags/career/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/categories/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/tags/certs/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/categories/Cloud/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/tags/gcp/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/tags/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/tags/aws/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/tags/iac/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/categories/Development/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/tags/golang/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/docs/cloud-native-handbook/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/docs/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/posts/</loc>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+</urlset>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud on &gt; codeform</title>
+    <link>https://codeform.io/categories/Cloud/</link>
+    <description>Recent content in Cloud on &gt; codeform</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 20 May 2019 10:30:00 -0400</lastBuildDate>
+    
+	<atom:link href="https://codeform.io/categories/Cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Getting Started with Cloud Init</title>
+      <link>https://codeform.io/posts/getting-started-with-cloud-init/</link>
+      <pubDate>Mon, 30 Oct 2017 10:30:00 -0400</pubDate>
+      
+      <guid>https://codeform.io/posts/getting-started-with-cloud-init/</guid>
+      <description>In this guide we are going to use cloud-init to bootstrap an apache server on AWS EC2.
+Introduction Cloud init is a service that comes installed on newer OS distributions. It is able to consume cloud-config files and execute them during the very first boot of a server. Cloud-config files use a declarative syntax (YAML format) to specify common configuration tasks such as:
+ Configuring SSH keys Settting up trusted CA certs Define users Run scripts etc.</description>
+    </item>
+    
+    <item>
+      <title>Notes on the Google Cloud Architect Certification</title>
+      <link>https://codeform.io/posts/google-cloud-architect-certification-notes/</link>
+      <pubDate>Mon, 20 May 2019 10:30:00 -0400</pubDate>
+      
+      <guid>https://codeform.io/posts/google-cloud-architect-certification-notes/</guid>
+      <description>When Google Cloud launched their Kubernetes platform (GKE) back in 2015 I signed up for the free trial. Today my free credits are long gone, but I still run and launch new clusters on a weekly basis. After putting it off for a while, I recently decided to formalize my experience by getting the GCP Architect certification. In this post I detail some of the resources I used to prepare for the exam.</description>
+    </item>
+    
+  </channel>
+</rss>

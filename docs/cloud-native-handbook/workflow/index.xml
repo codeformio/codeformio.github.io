@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Workflow on &gt; codeform</title>
+    <link>https://codeform.io/docs/cloud-native-handbook/workflow/</link>
+    <description>Recent content in Workflow on &gt; codeform</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://codeform.io/docs/cloud-native-handbook/workflow/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Organizing Code &amp; Config</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/workflow/organizing-code-and-config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://codeform.io/docs/cloud-native-handbook/workflow/organizing-code-and-config/</guid>
+      <description>Organizing Code and Config Using a seperate repository for code and deployment manifests is recommended. The purpose of the code repo is solely to produce versioned software artifacts. The purpose of the config repo is solely to describe deployable software. Seperating these concerns provides multiple benefits.
+Small Merges Multiple environments typically correspond to multiple git branches. By keeping the concept of deployments local to config repositories (and out of code repos) you are able to handle environment promotion with smaller merges.</description>
+    </item>
+    
+    <item>
+      <title>Developing</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/workflow/developing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://codeform.io/docs/cloud-native-handbook/workflow/developing/</guid>
+      <description>Developing All development should occur in a &amp;ldquo;code repo&amp;rdquo;. This is a repository where the sole purpose is to produce deployable software. In the cloud native world, this means the goal is to push container images to a registry.
+The branching strategy described here mirrors oneflow. We feel like it is a good fit for most teams. A single long-lived branch keeps merging simple. Git tagging triggers container image tagging. Deployment is decoupled, avoiding the complexity of maintaining environment-specific branches.</description>
+    </item>
+    
+    <item>
+      <title>Deploying</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/workflow/deploying/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://codeform.io/docs/cloud-native-handbook/workflow/deploying/</guid>
+      <description>Deploying All deployments should be triggered from a &amp;ldquo;config repo&amp;rdquo;. This is a repository where the sole purpose is to describe runnable software (not develop it - no source code here).
+ Environment Promotion There are two top concerns when promoting software across environments:
+ Isolation - Seperating changes across environments Parity / Variety - Minimizing / accounting for differences  Isolation Isolation is addressed using branching. The top concern is to isolate non-production and production changes.</description>
+    </item>
+    
+    <item>
+      <title>Exercise</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/workflow/exercise/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://codeform.io/docs/cloud-native-handbook/workflow/exercise/</guid>
+      <description>Workflow Exercise Setup Define the environment.
+export ENV=non-prod Create a local cluster representing this environment.
+kind create cluster --name $ENV Bootstrap the Cluster Install the GitOps engine.
+kustomize build &amp;#34;https://github.com/codeformio/k8s-cluster-config/library/argocd?ref=$ENV&amp;#34; | kubectl apply -f - Bootstrap the cluster configuration by installing the root ArgoCD Application.
+kubectl apply -f https://raw.githubusercontent.com/codeformio/k8s-cluster-config/$ENV/deploy/$ENV/root.yaml Login to UI The ArgoCD UI can be used to view the application. By default the password for the admin user is set to the server&amp;rsquo;s pod name.</description>
+    </item>
+    
+  </channel>
+</rss>

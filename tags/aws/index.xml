@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aws on &gt; codeform</title>
+    <link>https://codeform.io/tags/aws/</link>
+    <description>Recent content in aws on &gt; codeform</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 30 Oct 2017 10:30:00 -0400</lastBuildDate>
+    
+	<atom:link href="https://codeform.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Getting Started with Cloud Init</title>
+      <link>https://codeform.io/posts/getting-started-with-cloud-init/</link>
+      <pubDate>Mon, 30 Oct 2017 10:30:00 -0400</pubDate>
+      
+      <guid>https://codeform.io/posts/getting-started-with-cloud-init/</guid>
+      <description>In this guide we are going to use cloud-init to bootstrap an apache server on AWS EC2.
+Introduction Cloud init is a service that comes installed on newer OS distributions. It is able to consume cloud-config files and execute them during the very first boot of a server. Cloud-config files use a declarative syntax (YAML format) to specify common configuration tasks such as:
+ Configuring SSH keys Settting up trusted CA certs Define users Run scripts etc.</description>
+    </item>
+    
+  </channel>
+</rss>
