@@ -12,7 +12,7 @@
     <item>
       <title>Getting Started with Cloud Init</title>
       <link>https://codeform.io/posts/getting-started-with-cloud-init/</link>
-      <pubDate>Mon, 30 Oct 2017 10:30:00 -0400</pubDate>
+      <pubDate>Wed, 30 Oct 2019 10:30:00 -0400</pubDate>
       
       <guid>https://codeform.io/posts/getting-started-with-cloud-init/</guid>
       <description>In this guide we are going to use cloud-init to bootstrap an apache server on AWS EC2.
