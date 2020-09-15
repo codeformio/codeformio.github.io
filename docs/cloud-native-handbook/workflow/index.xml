@@ -46,11 +46,10 @@ The branching strategy described here mirrors oneflow. We feel like it is a good
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://codeform.io/docs/cloud-native-handbook/workflow/exercise/</guid>
-      <description>Workflow Exercise Setup Define the environment.
+      <description>Workflow Exercise Prereqs Make sure you have the following tools installed and up to date:
+  docker - For building containers and running k8s with kind.  kind - For creating local k8s clusters.  kubectl - For interacting with k8s.  kustomize - For templating k8s manifests.  Setup Define the environment.
 export ENV=non-prod export CLUSTER=non-east-a Create a local cluster representing this environment.
-kind create cluster --name $CLUSTER Bootstrap the Cluster Install the GitOps engine.
-kustomize build &amp;#34;https://github.com/codeformio/k8s-cluster-config/base/argocd?ref=$ENV&amp;#34; | kubectl apply -f - Configure the GitOps engine.
-kustomize build &amp;#34;https://github.com/codeformio/k8s-gitops-config/$ENV/$CLUSTER?ref=$ENV&amp;#34; | kubectl apply -f - Login to UI The ArgoCD UI can be used to view the application. By default the password for the admin user is set to the server&amp;rsquo;s pod name.</description>
+kind create cluster --name $CLUSTER Bootstrap the Cluster Install the GitOps engine.</description>
     </item>
     
   </channel>
