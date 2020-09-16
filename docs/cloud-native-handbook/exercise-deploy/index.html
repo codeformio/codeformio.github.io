@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Exercise - Deploying Stuff to Kubernetes Prereqs Make sure you have the following tools installed and up to date:
+  docker - For building containers and running k8s with kind.  kind - For creating local k8s clusters.  kubectl - For interacting with k8s.  kustomize - For templating k8s manifests.  Setup Define the environment.
+export ENV=non-prod export CLUSTER=non-east-a Create a local cluster representing this environment.
+kind create cluster --name $CLUSTER Bootstrap the Cluster Install the GitOps engine."><meta property="og:title" content="Exercise: Deploying" />
+<meta property="og:description" content="Exercise - Deploying Stuff to Kubernetes Prereqs Make sure you have the following tools installed and up to date:
+  docker - For building containers and running k8s with kind.  kind - For creating local k8s clusters.  kubectl - For interacting with k8s.  kustomize - For templating k8s manifests.  Setup Define the environment.
+export ENV=non-prod export CLUSTER=non-east-a Create a local cluster representing this environment.
+kind create cluster --name $CLUSTER Bootstrap the Cluster Install the GitOps engine." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://codeform.io/docs/cloud-native-handbook/exercise-deploy/" />
+
+<title>Exercise: Deploying | &gt; codeform</title>
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/book.min.63eb88daa545365405ecdbb21033286a325c60a36cfa6d22d21e7c3bc9286941.css" integrity="sha256-Y&#43;uI2qVFNlQF7NuyEDMoajJcYKNs&#43;m0i0h58O8koaUE=">
+
+
+<script defer src="/en.search.min.abb7b0d62ace6ba502728dad9b239bc4bd425c0fd00e76d932725d81a1a45666.js" integrity="sha256-q7ew1irOa6UCco2tmyObxL1CXA/QDnbZMnJdgaGkVmY="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>&gt; codeform</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+
+
+
+
+
+ 
+  
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        
+
+  <li>
+    
+
+  
+  <a href="/docs/cloud-native-handbook/" class="collapsed ">Cloud Native Handbook</a>
+  
+
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  
+  <a href="/docs/cloud-native-handbook/repositories/" class="">Repositories</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/docs/cloud-native-handbook/development/" class="">Development</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/docs/cloud-native-handbook/deployment/" class="">Deployment</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/docs/cloud-native-handbook/exercise-deploy/" class="active">Exercise: Deploying</a>
+  
+
+</li>
+      
+    
+      
+        <li>
+
+  
+  <a href="/docs/cloud-native-handbook/teams/" class="">Teams</a>
+  
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+      
+    
+  </ul>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/mentoring/" >
+        Mentoring
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/" >
+        Posts
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/codeformio" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Exercise: Deploying</strong>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#exercise---deploying-stuff-to-kubernetes">Exercise - Deploying Stuff to Kubernetes</a>
+      <ul>
+        <li><a href="#prereqs">Prereqs</a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#bootstrap-the-cluster">Bootstrap the Cluster</a></li>
+        <li><a href="#login-to-ui">Login to UI</a></li>
+        <li><a href="#update-an-application">Update an Application</a></li>
+        <li><a href="#deploy-an-updated-application">Deploy an Updated Application</a></li>
+        <li><a href="#cleanup">Cleanup</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="exercise---deploying-stuff-to-kubernetes">Exercise - Deploying Stuff to Kubernetes</h1>
+<h2 id="prereqs">Prereqs</h2>
+<p>Make sure you have the following tools installed and up to date:</p>
+<ul>
+<li>
+  <a href="https://docs.docker.com/get-docker/">docker</a> - For building containers and running k8s with <code>kind</code>.</li>
+<li>
+  <a href="https://kind.sigs.k8s.io/docs/user/quick-start/">kind</a> - For creating local k8s clusters.</li>
+<li>
+  <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a> - For interacting with k8s.</li>
+<li>
+  <a href="https://kubernetes-sigs.github.io/kustomize/installation/">kustomize</a> - For templating k8s manifests.</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<p>Define the environment.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export ENV<span style="color:#f92672">=</span>non-prod
+export CLUSTER<span style="color:#f92672">=</span>non-east-a
+</code></pre></div><p>Create a local cluster representing this environment.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kind create cluster --name $CLUSTER
+</code></pre></div><h2 id="bootstrap-the-cluster">Bootstrap the Cluster</h2>
+<p>Install the GitOps engine.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kustomize build <span style="color:#e6db74">&#34;https://github.com/codeformio/k8s-cluster-config/base/argocd?ref=</span>$ENV<span style="color:#e6db74">&#34;</span> | kubectl apply -f -
+</code></pre></div><p>Configure the GitOps engine.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kustomize build <span style="color:#e6db74">&#34;https://github.com/codeformio/k8s-gitops-config/</span>$ENV<span style="color:#e6db74">/</span>$CLUSTER<span style="color:#e6db74">?ref=</span>$ENV<span style="color:#e6db74">&#34;</span> | kubectl apply -f -
+</code></pre></div><h2 id="login-to-ui">Login to UI</h2>
+<p>The ArgoCD UI can be used to view the application. By default the password for the <code>admin</code> user is set to the server&rsquo;s pod name.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get pods -n argocd
+</code></pre></div><p>Port forward and login by visiting 
+  <a href="https://localhost:8080">https://localhost:8080</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl port-forward -n argocd svc/argocd-server 8080:443
+</code></pre></div><p>Port forward the application&rsquo;s port to see it respond.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl port-forward -n greeter svc/hello-api 8000:80
+</code></pre></div><p>In another terminal&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl localhost:8000 -v
+</code></pre></div><h2 id="update-an-application">Update an Application</h2>
+<p>TODO</p>
+<h2 id="deploy-an-updated-application">Deploy an Updated Application</h2>
+<p>TODO</p>
+<h2 id="cleanup">Cleanup</h2>
+<p>Delete the local cluster.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kind delete cluster --name $CLUSTER
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/codeformio/codeform.io/edit/master/content/docs/cloud-native-handbook/exercise-deploy.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#exercise---deploying-stuff-to-kubernetes">Exercise - Deploying Stuff to Kubernetes</a>
+      <ul>
+        <li><a href="#prereqs">Prereqs</a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#bootstrap-the-cluster">Bootstrap the Cluster</a></li>
+        <li><a href="#login-to-ui">Login to UI</a></li>
+        <li><a href="#update-an-application">Update an Application</a></li>
+        <li><a href="#deploy-an-updated-application">Deploy an Updated Application</a></li>
+        <li><a href="#cleanup">Cleanup</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

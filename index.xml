@@ -10,46 +10,56 @@
     
     
     <item>
-      <title>Organizing Code &amp; Config</title>
-      <link>https://codeform.io/docs/cloud-native-handbook/workflow/organizing-code-and-config/</link>
+      <title>Repositories</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/repositories/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://codeform.io/docs/cloud-native-handbook/workflow/organizing-code-and-config/</guid>
-      <description>Organizing Code and Config Using a seperate repository for code and deployment manifests is recommended. The purpose of the code repo is solely to produce versioned software artifacts. The purpose of the config repo is solely to describe deployable software. Seperating these concerns provides multiple benefits.
-Small Merges Multiple environments typically correspond to multiple git branches. By keeping the concept of deployments local to config repositories (and out of code repos) you are able to handle environment promotion with smaller merges.</description>
+      <guid>https://codeform.io/docs/cloud-native-handbook/repositories/</guid>
+      <description>Repositories When building on top of a cloud native platform all code and configuration should be version controlled. In Kubernetes, all deployment events are merely a result of updating a configuration file (referred to here as a Kubernetes manifest). Since all changes to code and config must be version controlled, we will use our repository as the origin of all changes to running software. This process is known as GitOps.</description>
     </item>
     
     <item>
-      <title>Developing</title>
-      <link>https://codeform.io/docs/cloud-native-handbook/workflow/developing/</link>
+      <title>Development</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/development/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://codeform.io/docs/cloud-native-handbook/workflow/developing/</guid>
-      <description>Developing All development should occur in a &amp;ldquo;code repo&amp;rdquo;. This is a repository where the sole purpose is to produce deployable software. In the cloud native world, this means the goal is to push container images to a registry.
-The branching strategy described here mirrors oneflow. We feel like it is a good fit for most teams. A single long-lived branch keeps merging simple. Git tagging triggers container image tagging. Deployment is decoupled, avoiding the complexity of maintaining environment-specific branches.</description>
+      <guid>https://codeform.io/docs/cloud-native-handbook/development/</guid>
+      <description>Development All development should occur in a &amp;ldquo;code repo&amp;rdquo;. This is a repository where the sole purpose is to produce deployable software. In the cloud native world, this means the goal is to push container images to a registry.
+Branching Strategy The branching strategy described here mirrors oneflow. We feel like it is a good fit for most teams. A single long-lived branch keeps merging simple. Git tagging triggers container image tagging.</description>
     </item>
     
     <item>
-      <title>Deploying</title>
-      <link>https://codeform.io/docs/cloud-native-handbook/workflow/deploying/</link>
+      <title>Deployment</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/deployment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://codeform.io/docs/cloud-native-handbook/workflow/deploying/</guid>
-      <description>Deploying All deployments should be triggered from a &amp;ldquo;config repo&amp;rdquo;. This is a repository where the sole purpose is to describe runnable software (not develop it - no source code here).
- Environment Promotion There are two top concerns when promoting software across environments:
- Isolation - Seperating changes across environments Parity / Variety - Minimizing / accounting for differences  Isolation Isolation is addressed using branching. The top concern is to isolate non-production and production changes.</description>
+      <guid>https://codeform.io/docs/cloud-native-handbook/deployment/</guid>
+      <description>Deployment Since Kubernetes is a declarative system, the act of deploying software translates to pushing Kubernetes configuration manifests into a cluster. These manifests contain descriptions of applications that should be running (what container image, how many replicas, any environment variables, dns names, etc). The cluster will then work to make sure what was declared becomes a reality.
+Branching Strategy All manifests should be version controlled in a git repository (referred to here as a config repo).</description>
     </item>
     
     <item>
-      <title>Exercise</title>
-      <link>https://codeform.io/docs/cloud-native-handbook/workflow/exercise/</link>
+      <title>Exercise: Deploying</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/exercise-deploy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://codeform.io/docs/cloud-native-handbook/workflow/exercise/</guid>
-      <description>Workflow Exercise Prereqs Make sure you have the following tools installed and up to date:
+      <guid>https://codeform.io/docs/cloud-native-handbook/exercise-deploy/</guid>
+      <description>Exercise - Deploying Stuff to Kubernetes Prereqs Make sure you have the following tools installed and up to date:
   docker - For building containers and running k8s with kind.  kind - For creating local k8s clusters.  kubectl - For interacting with k8s.  kustomize - For templating k8s manifests.  Setup Define the environment.
 export ENV=non-prod export CLUSTER=non-east-a Create a local cluster representing this environment.
 kind create cluster --name $CLUSTER Bootstrap the Cluster Install the GitOps engine.</description>
+    </item>
+    
+    <item>
+      <title>Teams</title>
+      <link>https://codeform.io/docs/cloud-native-handbook/teams/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://codeform.io/docs/cloud-native-handbook/teams/</guid>
+      <description>Teams Delegation of Resource Management When organizing teams and processes, it helps to think of Kubernetes manifests as either application or cluster related:
+  Application-related manifests are namespaced, some common ones being:
+ Deployment (What container should be running) Service (Service discovery / cluster DNS) ConfigMap (Define application confiuration files and env vars)    Some examples of cluster-concerns / administrative manifests include:
+ Namespace (A group of other resources) ResourceLimit (How much cpu/memory can be used in a Namespace) NetworkPolicy (What apps can talk to eachother) ClusterRole/ClusterRoleBinding (Access control, what k8s users can see/do)    Typically, cluster operations teams have the ability to manage what namespaces (and associated restrictions) exist.</description>
     </item>
     
     <item>

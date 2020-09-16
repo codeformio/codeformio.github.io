@@ -3,33 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://codeform.io/docs/cloud-native-handbook/workflow/</loc>
-    <lastmod>2020-09-02T09:59:45-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://codeform.io/docs/cloud-native-handbook/workflow/organizing-code-and-config/</loc>
+    <loc>https://codeform.io/docs/cloud-native-handbook/</loc>
     <lastmod>2020-08-18T16:16:07-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://codeform.io/docs/cloud-native-handbook/workflow/developing/</loc>
-    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+    <loc>https://codeform.io/docs/cloud-native-handbook/repositories/</loc>
   </url>
   
   <url>
-    <loc>https://codeform.io/docs/cloud-native-handbook/workflow/deploying/</loc>
-    <lastmod>2020-09-14T17:19:52-04:00</lastmod>
+    <loc>https://codeform.io/docs/cloud-native-handbook/development/</loc>
   </url>
   
   <url>
-    <loc>https://codeform.io/docs/cloud-native-handbook/workflow/exercise/</loc>
-    <lastmod>2020-09-14T14:44:23-04:00</lastmod>
+    <loc>https://codeform.io/docs/cloud-native-handbook/deployment/</loc>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/docs/cloud-native-handbook/exercise-deploy/</loc>
   </url>
   
   <url>
     <loc>https://codeform.io/mentoring/</loc>
     <lastmod>2020-08-18T16:16:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://codeform.io/docs/cloud-native-handbook/teams/</loc>
   </url>
   
   <url>
@@ -108,13 +108,8 @@
   </url>
   
   <url>
-    <loc>https://codeform.io/docs/cloud-native-handbook/</loc>
-    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://codeform.io/docs/</loc>
-    <lastmod>2020-09-14T17:19:52-04:00</lastmod>
+    <lastmod>2020-08-18T16:16:07-04:00</lastmod>
   </url>
   
   <url>
