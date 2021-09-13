@@ -7,17 +7,18 @@
 <meta name="description" content="Exploring the defacto way to configure VMs on startup using cloud-init."><meta property="og:title" content="Getting Started with Cloud Init" />
 <meta property="og:description" content="Exploring the defacto way to configure VMs on startup using cloud-init." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://codeform.io/posts/getting-started-with-cloud-init/" />
+<meta property="og:url" content="https://codeform.io/posts/getting-started-with-cloud-init/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-10-30T10:30:00-04:00" />
 <meta property="article:modified_time" content="2020-09-02T11:20:19-04:00" />
+
 <title>Getting Started with Cloud Init | &gt; codeform</title>
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/book.min.63eb88daa545365405ecdbb21033286a325c60a36cfa6d22d21e7c3bc9286941.css" integrity="sha256-Y&#43;uI2qVFNlQF7NuyEDMoajJcYKNs&#43;m0i0h58O8koaUE=">
+<link rel="stylesheet" href="/book.min.43ea4026a52be03f709fccca49769e06471f235a1fc425b2a481cc2c3ea0a7d2.css" integrity="sha256-Q&#43;pAJqUr4D9wn8zKSXaeBkcfI1ofxCWypIHMLD6gp9I=">
 
 
-<script defer src="/en.search.min.8b0fa83b61129b19b4a9625a4ad657b80a1d5695f0940d1c0e23e9501345ee05.js" integrity="sha256-iw&#43;oO2ESmxm0qWJaStZXuAodVpXwlA0cDiPpUBNF7gU="></script>
+<script defer src="/en.search.min.600276b1999118a0f3b5c159ebc96c05fa7eafda6a47003e8ae9a109df4e1058.js" integrity="sha256-YAJ2sZmRGKDztcFZ68lsBfp&#43;r9pqRwA&#43;iumhCd9OEFg="></script>
 
 <!--
 Made with Book Theme
@@ -148,7 +149,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -245,12 +246,12 @@ https://github.com/alex-shpak/hugo-book
 </ol>
 <h3 id="steps">Steps</h3>
 <p>Create a key pair to allow you to login to the VM you create. NOTE: You may already have one but we will go ahead and remove this one later anyways.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export KEY_NAME<span style="color:#f92672">=</span>cloud-init-tutorial
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export KEY_NAME<span style="color:#f92672">=</span>cloud-init-tutorial
 export KEY_FILE<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>KEY_NAME<span style="color:#e6db74">}</span>.pem
 aws ec2 create-key-pair --key-name <span style="color:#e6db74">${</span>KEY_NAME<span style="color:#e6db74">}</span> --query <span style="color:#e6db74">&#39;KeyMaterial&#39;</span> --output text &gt; <span style="color:#e6db74">${</span>KEY_FILE<span style="color:#e6db74">}</span>
 chmod <span style="color:#ae81ff">400</span> <span style="color:#e6db74">${</span>KEY_FILE<span style="color:#e6db74">}</span>
 </code></pre></div><p>Create a security group that allows for SSH access from anywhere.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export SEC_GRP_ID<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>aws ec2 create-security-group --group-name CloudInitTutorial --description <span style="color:#e6db74">&#34;SSH from anywhere&#34;</span> --output json | jq -r <span style="color:#e6db74">&#39;.GroupId&#39;</span><span style="color:#e6db74">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export SEC_GRP_ID<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>aws ec2 create-security-group --group-name CloudInitTutorial --description <span style="color:#e6db74">&#34;SSH from anywhere&#34;</span> --output json | jq -r <span style="color:#e6db74">&#39;.GroupId&#39;</span><span style="color:#e6db74">`</span>
 
 aws ec2 authorize-security-group-ingress <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --group-id <span style="color:#e6db74">${</span>SEC_GRP_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
@@ -258,7 +259,7 @@ aws ec2 authorize-security-group-ingress <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --port <span style="color:#ae81ff">22</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --cidr 0.0.0.0/0
 </code></pre></div><p>Define the cloud-config file we will use to install apache.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39; &gt;&gt; cloud-config.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat <span style="color:#e6db74">&lt;&lt;&#39;EOF&#39; &gt;&gt; cloud-config.txt
 </span><span style="color:#e6db74">#cloud-config
 </span><span style="color:#e6db74">repo_update: true
 </span><span style="color:#e6db74">repo_upgrade: all
@@ -280,7 +281,7 @@ aws ec2 authorize-security-group-ingress <span style="color:#ae81ff">\
 </span><span style="color:#e6db74">EOF</span>
 </code></pre></div><p>Create the VM. Note the <code>--user-data</code> flag we are passing. This is where we are specifying the cloud-init configuration. AWS knows to interpret this as a cloud-init file because of the first line in the file: <code>#cloud-config</code>. See more examples of cloud configs 
   <a href="https://cloudinit.readthedocs.io/en/latest/topics/examples.html">here</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export INSTANCE_ID<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>aws ec2 run-instances <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export INSTANCE_ID<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>aws ec2 run-instances <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>	--image-id ami-00c03f7f7f2ec15c3 <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>	--count <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>	--instance-type t2.micro <span style="color:#ae81ff">\
@@ -289,13 +290,13 @@ aws ec2 authorize-security-group-ingress <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>	--user-data file://cloud-config.txt <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>	| jq -r <span style="color:#e6db74">&#39;.Instances[0].InstanceId&#39;</span><span style="color:#e6db74">`</span>
 </code></pre></div><p>Grab the public DNS name of the VM.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export INSTANCE_DNS<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>aws ec2 describe-instances --filters <span style="color:#e6db74">&#34;Name=instance-id,Values=</span><span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | jq -r <span style="color:#e6db74">&#39;.Reservations[0].Instances[0].PublicDnsName&#39;</span><span style="color:#e6db74">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export INSTANCE_DNS<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>aws ec2 describe-instances --filters <span style="color:#e6db74">&#34;Name=instance-id,Values=</span><span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | jq -r <span style="color:#e6db74">&#39;.Reservations[0].Instances[0].PublicDnsName&#39;</span><span style="color:#e6db74">`</span>
 </code></pre></div><p>Login to the VM and test that our cloud-init configuration worked. Note: you may have to wait for the instance to initialize.</p>
-<pre><code>ssh -i ${KEY_FILE} ec2-user@${INSTANCE_DNS}
+<pre tabindex="0"><code>ssh -i ${KEY_FILE} ec2-user@${INSTANCE_DNS}
 
 wget -O - http://localhost:80/phpinfo.php
 </code></pre><h3 id="cleanup">Cleanup</h3>
-<pre><code># Terminate instance.
+<pre tabindex="0"><code># Terminate instance.
 aws ec2 terminate-instances --instance-ids ${INSTANCE_ID}
 
 # Delete security group (after instance is terminated).

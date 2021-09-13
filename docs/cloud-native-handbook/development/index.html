@@ -9,16 +9,18 @@ Branching Strategy The branching strategy described here mirrors oneflow. We fee
 <meta property="og:description" content="Development All development should occur in a &ldquo;code repo&rdquo;. This is a repository where the sole purpose is to produce deployable software. In the cloud native world, this means the goal is to push container images to a registry.
 Branching Strategy The branching strategy described here mirrors oneflow. We feel like it is a good fit for most teams. A single long-lived branch keeps merging simple. Git tagging triggers container image tagging." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://codeform.io/docs/cloud-native-handbook/development/" />
+<meta property="og:url" content="https://codeform.io/docs/cloud-native-handbook/development/" /><meta property="article:section" content="docs" />
+
 <meta property="article:modified_time" content="2020-11-13T15:04:11-05:00" />
+
 <title>Development | &gt; codeform</title>
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/book.min.63eb88daa545365405ecdbb21033286a325c60a36cfa6d22d21e7c3bc9286941.css" integrity="sha256-Y&#43;uI2qVFNlQF7NuyEDMoajJcYKNs&#43;m0i0h58O8koaUE=">
+<link rel="stylesheet" href="/book.min.43ea4026a52be03f709fccca49769e06471f235a1fc425b2a481cc2c3ea0a7d2.css" integrity="sha256-Q&#43;pAJqUr4D9wn8zKSXaeBkcfI1ofxCWypIHMLD6gp9I=">
 
 
-<script defer src="/en.search.min.8b0fa83b61129b19b4a9625a4ad657b80a1d5695f0940d1c0e23e9501345ee05.js" integrity="sha256-iw&#43;oO2ESmxm0qWJaStZXuAodVpXwlA0cDiPpUBNF7gU="></script>
+<script defer src="/en.search.min.600276b1999118a0f3b5c159ebc96c05fa7eafda6a47003e8ae9a109df4e1058.js" integrity="sha256-YAJ2sZmRGKDztcFZ68lsBfp&#43;r9pqRwA&#43;iumhCd9OEFg="></script>
 
 <!--
 Made with Book Theme
@@ -205,7 +207,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -263,10 +265,10 @@ https://github.com/alex-shpak/hugo-book
   <img src="/images/development-repo.jpg" alt="Development repo branching" /></p>
 <h2 id="1-features">1. Features</h2>
 <p>To add new features, first create a <code>feature/&lt;feature-name&gt;</code> branch.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># From the main branch (git checkout main)...</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># From the main branch (git checkout main)...</span>
 git checkout -b feature/my-feature
 </code></pre></div><p>Add your code changes and any documentation updates. Push the branch.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git push -u origin feature/my-feature
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git push -u origin feature/my-feature
 </code></pre></div><p>Create a Pull Request from your branch <code>feature/my-feature</code> into <code>main</code>.</p>
 <p>Now the git hosting service you are using should require the following before enabling a merge:</p>
 <ul>
@@ -287,7 +289,7 @@ git checkout -b feature/my-feature
 <p>Once the merge occurs, the feature branch should be automatically removed to keep the repository clean.</p>
 <h2 id="2-releases">2. Releases</h2>
 <p>To prepare for releasing software (updating versions / documentation / etc), create a <code>release/&lt;semantic-version&gt;</code> branch.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># From the main branch (git checkout main)...</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># From the main branch (git checkout main)...</span>
 git checkout -b release/2.3.0
 </code></pre></div><p>This release branch should follow 
   <a href="https://semver.org/">semantic versioning</a>:</p>
@@ -296,7 +298,7 @@ git checkout -b release/2.3.0
 <li>Non-Backwards compatible changes (a new major version, zero&rsquo;ed minor/patch versions): <code>3.0.0</code></li>
 </ul>
 <p>Once all of the documentation and version updates are done, push the branch.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git push -u origin release/2.3.0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git push -u origin release/2.3.0
 </code></pre></div><p>All of the same automated checks that apply to feature branches should be run before the release branch can be merged. The human approval checklist should include:</p>
 <ul>
 <li>[✓] 
@@ -317,12 +319,12 @@ git checkout -b release/2.3.0
 <h2 id="3-patches">3. Patches</h2>
 <p>Patches are needed when defects are found in released software. Commonly, the main branch has progressed past the current released software when the bug is found. The goal is to quickly fix the bug without hurriedly releasing a new set of features. This is commonly referred to as a &ldquo;hotfix&rdquo;.</p>
 <p>To start this process, first create a new <code>patch/&lt;semantic-version&gt;</code> branch off of the current released tag. The semantic version should be the same as the current release, except it should have the patch version bumped.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git checkout -b patch/2.3.1 v2.3.0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git checkout -b patch/2.3.1 v2.3.0
 </code></pre></div><p>After fixing the bug, follow the same procedure used in a release branch: create a pull request, create a tag matching the branch version, and merge the hotfix back into the main branch to ensure it does not re-appear in future releases.</p>
 <h2 id="ci-systems">CI Systems</h2>
 <p>In a cloud native world, all tests and builds should occur in containers. This means that your CI system does not need to be very complex. The biggest complexity here will come from linking the CI system to the repository (auth with service accounts, defining branch merging requirements, etc). Prefer integrated CI systems when possible to avoid the complexity of linking these two systems (i.e. GitHub workflows, GitLab pipelines).</p>
 <h2 id="takeaways">Takeaways</h2>
-<pre><code>1 Long lived branch: &quot;main&quot;
+<pre tabindex="0"><code>1 Long lived branch: &quot;main&quot;
 
 3 Short-lived branch types (all merge to main):
 - &quot;feature/&lt;name&gt;&quot;
